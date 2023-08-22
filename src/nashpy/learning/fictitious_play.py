@@ -72,8 +72,7 @@ def fictitious_play(
 
     yield play_counts
 
-    for repetition in range(iterations):
-
+    for _ in range(iterations):
         plays = [
             get_best_response_to_play_count(matrix, play_count)
             for matrix, play_count in zip((A, B.transpose()), play_counts[::-1])

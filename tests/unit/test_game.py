@@ -159,7 +159,7 @@ Column player:
             for s1, s2 in zip(obtained, expected):
                 self.assertTrue(
                     np.array_equal(s1, s2),
-                    msg="obtained: {} !=expected: {}".format(obtained, expected),
+                    msg=f"obtained: {obtained} !=expected: {expected}",
                 )
 
         A = np.array([[1, 0], [-2, 3]])
@@ -174,7 +174,7 @@ Column player:
             for s1, s2 in zip(obtained, expected):
                 self.assertTrue(
                     np.array_equal(s1, s2),
-                    msg="obtained: {} !=expected: {}".format(obtained, expected),
+                    msg=f"obtained: {obtained} !=expected: {expected}",
                 )
 
         A = np.array([[2, 1], [0, 2]])
@@ -189,7 +189,7 @@ Column player:
             for s1, s2 in zip(obtained, expected):
                 self.assertTrue(
                     np.array_equal(s1, s2),
-                    msg="obtained: {} !=expected: {}".format(obtained, expected),
+                    msg=f"obtained: {obtained} !=expected: {expected}",
                 )
 
     def test_support_enumeration_for_degenerate_bi_matrix_game(self):
@@ -208,7 +208,7 @@ Column player:
                 for s1, s2 in zip(obtained, expected):
                     self.assertTrue(
                         np.array_equal(s1, s2),
-                        msg="obtained: {} !=expected: {}".format(obtained, expected),
+                        msg=f"obtained: {obtained} !=expected: {expected}",
                     )
             self.assertGreater(len(w), 0)
             self.assertEqual(w[-1].category, RuntimeWarning)
@@ -226,7 +226,7 @@ Column player:
                 for s1, s2 in zip(obtained, expected):
                     self.assertTrue(
                         np.allclose(s1, s2),
-                        msg="obtained: {} !=expected: {}".format(obtained, expected),
+                        msg=f"obtained: {obtained} !=expected: {expected}",
                     )
             self.assertGreater(len(w), 0)
             self.assertEqual(w[-1].category, RuntimeWarning)
@@ -246,7 +246,7 @@ Column player:
                 for s1, s2 in zip(obtained, expected):
                     self.assertTrue(
                         np.allclose(s1, s2),
-                        msg="obtained: {} !=expected: {}".format(obtained, expected),
+                        msg=f"obtained: {obtained} !=expected: {expected}",
                     )
             self.assertGreater(len(w), 0)
             self.assertEqual(w[-1].category, RuntimeWarning)
@@ -322,7 +322,7 @@ Column player:
             for s1, s2 in zip(obtained, expected):
                 self.assertTrue(
                     all(np.isclose(s1, s2)),
-                    msg="obtained: {} !=expected: {}".format(obtained, expected),
+                    msg=f"obtained: {obtained} !=expected: {expected}",
                 )
 
         A = np.array([[1, 0], [-2, 3]])
@@ -337,7 +337,7 @@ Column player:
             for s1, s2 in zip(obtained, expected):
                 self.assertTrue(
                     all(np.isclose(s1, s2)),
-                    msg="obtained: {} !=expected: {}".format(obtained, expected),
+                    msg=f"obtained: {obtained} !=expected: {expected}",
                 )
 
         A = np.array([[2, 1], [0, 2]])
@@ -352,7 +352,7 @@ Column player:
             for s1, s2 in zip(obtained, expected):
                 self.assertTrue(
                     all(np.isclose(s1, s2)),
-                    msg="obtained: {} !=expected: {}".format(obtained, expected),
+                    msg=f"obtained: {obtained} !=expected: {expected}",
                 )
 
     def test_lemke_howson_for_bi_matrix(self):

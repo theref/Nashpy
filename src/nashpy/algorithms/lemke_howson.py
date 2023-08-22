@@ -58,9 +58,11 @@ def tableau_to_strategy(
     vertex = []
     for column in strategy_labels:
         if column in basic_labels:
-            for i, row in enumerate(tableau[:, column]):
-                if row != 0:
-                    vertex.append(tableau[i, -1] / row)
+            vertex.extend(
+                tableau[i, -1] / row
+                for i, row in enumerate(tableau[:, column])
+                if row != 0
+            )
         else:
             vertex.append(0)
     strategy = np.array(vertex)

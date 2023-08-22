@@ -40,10 +40,11 @@ def score_all_individuals(
     scores = []
 
     for i, player in enumerate(population):
-        total = 0
-        for j, opponent in enumerate(population):
-            if i != j:
-                total += A[player, opponent]
+        total = sum(
+            A[player, opponent]
+            for j, opponent in enumerate(population)
+            if i != j
+        )
         scores.append(total)
 
     return np.array(scores)
@@ -181,7 +182,7 @@ def fixation_probabilities(
     """
     number_of_strategies = A.shape[0]
     fixation_counts = np.array([0 for _ in range(number_of_strategies)])
-    for repetition in range(repetitions):
+    for _ in range(repetitions):
         generations = tuple(moran_process(A=A, initial_population=initial_population))
         last_population = generations[-1]
 

@@ -30,11 +30,9 @@ class Game:
 
     def __init__(self, *args: Any) -> None:
         if len(args) == 2:
-            if (not len(args[0]) == len(args[1])) or (
-                not len(args[0][0]) == len(args[1][0])
-            ):
+            if len(args[0]) != len(args[1]) or len(args[0][0]) != len(args[1][0]):
                 raise ValueError("Unequal dimensions for matrices A and B")
-            self.payoff_matrices = tuple([np.asarray(m) for m in args])
+            self.payoff_matrices = tuple(np.asarray(m) for m in args)
         if len(args) == 1:
             self.payoff_matrices = np.asarray(args[0]), -np.asarray(args[0])
         self.zero_sum = np.array_equal(
@@ -42,10 +40,7 @@ class Game:
         )
 
     def __repr__(self) -> str:
-        if self.zero_sum:
-            tpe = "Zero sum"
-        else:
-            tpe = "Bi matrix"
+        tpe = "Zero sum" if self.zero_sum else "Bi matrix"
         return """{} game with payoff matrices:
 
 Row player:

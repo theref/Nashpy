@@ -77,12 +77,12 @@ class TestPolytope(unittest.TestCase):
                 [0.0, 6.0, 0.0, 0.0, 1.0, 1.0],
             ]
         )
-        self.assertEqual(non_basic_variables(tableau), set([0, 1]))
+        self.assertEqual(non_basic_variables(tableau), {0, 1})
 
         tableau = np.array(
             [[3.0, 2.0, 3.0, 1.0, 0.0, 1.0], [2.0, 6.0, 1.0, 0.0, 1.0, 1.0]]
         )
-        self.assertEqual(non_basic_variables(tableau), set([0, 1, 2]))
+        self.assertEqual(non_basic_variables(tableau), {0, 1, 2})
 
     def test_particular_pivot(self):
         tableau = np.array(
@@ -92,7 +92,7 @@ class TestPolytope(unittest.TestCase):
                 [0.0, 6.0, 0.0, 0.0, 1.0, 1.0],
             ]
         )
-        self.assertEqual(pivot_tableau(tableau, column_index=0), set([2]))
+        self.assertEqual(pivot_tableau(tableau, column_index=0), {2})
         next_tableau = np.array(
             [
                 [3.0, 3.0, 1.0, 0.0, 0.0, 1.0],
@@ -102,9 +102,9 @@ class TestPolytope(unittest.TestCase):
         )
         self.assertTrue(
             np.array_equal(tableau, next_tableau),
-            msg="{} != {}".format(tableau, next_tableau),
+            msg=f"{tableau} != {next_tableau}",
         )
-        self.assertEqual(pivot_tableau(tableau, column_index=2), set([0]))
+        self.assertEqual(pivot_tableau(tableau, column_index=2), {0})
         next_tableau = np.array(
             np.array(
                 [
@@ -116,5 +116,5 @@ class TestPolytope(unittest.TestCase):
         )
         self.assertTrue(
             np.array_equal(tableau, next_tableau),
-            msg="{} != {}".format(tableau, next_tableau),
+            msg=f"{tableau} != {next_tableau}",
         )

@@ -68,9 +68,7 @@ def solve_indifference(A, rows=None, columns=None) -> Union[bool, Any]:
 
     try:
         prob = np.linalg.solve(M, b)
-        if all(prob >= 0):
-            return prob
-        return False
+        return prob if all(prob >= 0) else False
     except np.linalg.LinAlgError:
         return False
 
@@ -163,12 +161,13 @@ def obey_support(strategy, support: npt.NDArray, tol: float = 10**-16) -> bool:
     """
     if strategy is False:
         return False
-    if not all(
-        (i in support and value > tol) or (i not in support and value <= tol)
-        for i, value in enumerate(strategy)
-    ):
-        return False
-    return True
+    return all(
+        (
+            (i in support and value > tol)
+            or (i not in support and value <= tol)
+            for i, value in enumerate(strategy)
+        )
+    )
 
 
 def is_ne(

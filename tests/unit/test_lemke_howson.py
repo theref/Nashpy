@@ -33,7 +33,7 @@ class TestLemkeHowson(unittest.TestCase):
         shift = shift_tableau(tableau, (3, 2))
         self.assertTrue(
             np.array_equal(shift, expected_shift),
-            msg="{} != {}".format(shift, expected_shift),
+            msg=f"{shift} != {expected_shift}",
         )
 
     def test_particular_tableau_to_strategy(self):
@@ -44,8 +44,8 @@ class TestLemkeHowson(unittest.TestCase):
                 [0.0, 6.0, 0.0, 0.0, 1.0, 1.0],
             ]
         )
-        basic_labels = set([0, 1])
-        strategy_labels = set([0, 1])
+        basic_labels = {0, 1}
+        strategy_labels = {0, 1}
         strategy = tableau_to_strategy(tableau, basic_labels, strategy_labels)
         self.assertTrue(np.array_equal(strategy, np.array([2 / 3, 1 / 3])))
 
@@ -56,8 +56,8 @@ class TestLemkeHowson(unittest.TestCase):
                 [0.0, 6.0, 0.0, 0.0, 1.0, 1.0],
             ]
         )
-        basic_labels = set([0, 3])
-        strategy_labels = set([0, 1])
+        basic_labels = {0, 3}
+        strategy_labels = {0, 1}
         strategy = tableau_to_strategy(tableau, basic_labels, strategy_labels)
         self.assertTrue(np.array_equal(strategy, np.array([1, 0])))
 

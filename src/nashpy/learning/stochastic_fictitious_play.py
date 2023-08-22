@@ -32,10 +32,9 @@ def get_distribution_response_to_play_count(
         strategies = play_count / np.sum(play_count)
     utilities = A @ strategies
     noisy_utilities = utilities + np.random.random(A.shape[0]) * epsilon_bar
-    logit_choice = np.exp(etha**-1 * noisy_utilities) / np.sum(
+    return np.exp(etha**-1 * noisy_utilities) / np.sum(
         np.exp(etha**-1 * noisy_utilities)
     )
-    return logit_choice
 
 
 def stochastic_fictitious_play(
@@ -72,8 +71,7 @@ def stochastic_fictitious_play(
 
     yield play_counts, distributions
 
-    for repetition in range(iterations):
-
+    for _ in range(iterations):
         distributions = [
             get_distribution_response_to_play_count(
                 A=matrix,

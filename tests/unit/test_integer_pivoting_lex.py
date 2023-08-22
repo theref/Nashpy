@@ -130,7 +130,7 @@ class TestPolytope(unittest.TestCase):
         )
         self.assertTrue(
             np.array_equal(tableau, next_tableau),
-            msg="{} != {}".format(tableau, next_tableau),
+            msg=f"{tableau} != {next_tableau}",
         )
         self.assertEqual(
             pivot_tableau_lex(
@@ -152,7 +152,7 @@ class TestPolytope(unittest.TestCase):
         )
         self.assertTrue(
             np.array_equal(tableau, next_tableau),
-            msg="{} != {}".format(tableau, next_tableau),
+            msg=f"{tableau} != {next_tableau}",
         )
 
         # degenerate cases
@@ -181,7 +181,7 @@ class TestPolytope(unittest.TestCase):
         )
         self.assertTrue(
             np.array_equal(tableau, next_tableau),
-            msg="{} != {}".format(tableau, next_tableau),
+            msg=f"{tableau} != {next_tableau}",
         )
 
         tableau = np.array(
@@ -209,5 +209,5 @@ class TestPolytope(unittest.TestCase):
         )
         self.assertTrue(
             np.array_equal(tableau, next_tableau),
-            msg="{} != {}".format(tableau, next_tableau),
+            msg=f"{tableau} != {next_tableau}",
         )

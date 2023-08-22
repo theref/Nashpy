@@ -74,10 +74,12 @@ def replicator_dynamics(
         number_of_strategies = len(A)
         y0 = np.ones(number_of_strategies) / number_of_strategies
 
-    xs = odeint(
-        func=get_derivative_of_fitness, y0=y0, t=timepoints, args=(A, mutation_matrix)
+    return odeint(
+        func=get_derivative_of_fitness,
+        y0=y0,
+        t=timepoints,
+        args=(A, mutation_matrix),
     )
-    return xs
 
 
 def get_derivative_of_asymmetric_fitness(

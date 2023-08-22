@@ -46,9 +46,9 @@ def vertex_enumeration(
     col_halfspaces = build_halfspaces(A)
 
     for row_v, row_l in non_trivial_vertices(row_halfspaces):
-        adjusted_row_l = set(
+        adjusted_row_l = {
             (label + number_of_row_strategies) % (max_label) for label in row_l
-        )
+        }
 
         for col_v, col_l in non_trivial_vertices(col_halfspaces):
             if adjusted_row_l.union(col_l) == full_labels:

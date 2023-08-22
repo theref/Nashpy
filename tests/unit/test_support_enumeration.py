@@ -178,7 +178,7 @@ class TestSupportEnumeration(unittest.TestCase):
         for obtained, expected in zip(obtained_indifference, expected_indifference):
             self.assertTrue(
                 np.array_equal(obtained, expected),
-                msg="obtained: {} !=expected: {}".format(obtained, expected),
+                msg=f"obtained: {obtained} !=expected: {expected}",
             )
 
     def test_indifference_strategies_with_non_degenerate(self):
@@ -199,7 +199,7 @@ class TestSupportEnumeration(unittest.TestCase):
         for obtained, expected in zip(obtained_indifference, expected_indifference):
             self.assertTrue(
                 np.array_equal(obtained, expected),
-                msg="obtained: {} !=expected: {}".format(obtained, expected),
+                msg=f"obtained: {obtained} !=expected: {expected}",
             )
 
     def test_indifference_strategies_with_high_tolerance(self):
@@ -220,7 +220,7 @@ class TestSupportEnumeration(unittest.TestCase):
         for obtained, expected in zip(obtained_indifference, expected_indifference):
             self.assertTrue(
                 np.array_equal(obtained, expected),
-                msg="obtained: {} !=expected: {}".format(obtained, expected),
+                msg=f"obtained: {obtained} !=expected: {expected}",
             )
 
     def test_obey_support(self):

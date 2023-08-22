@@ -175,40 +175,31 @@ class TestPolytope(unittest.TestCase):
         for vertex, expected_vertex in zip(vertices, expected_vertices):
             self.assertTrue(
                 all(np.isclose(vertex, expected_vertex)),
-                msg="{} != {}".format(vertex, expected_vertex),
+                msg=f"{vertex} != {expected_vertex}",
             )
 
     def test_labelling_of_particular_vertices(self):
         A = np.array([[3, 3], [2, 5], [0, 6]])
         halfspaces = build_halfspaces(A)
         vertices = non_trivial_vertices(halfspaces)
-        expected_labels = sorted(
-            [set([0, 1]), set([0, 4]), set([1, 2]), set([2, 3])], key=list
-        )
+        expected_labels = sorted([{0, 1}, {0, 4}, {1, 2}, {2, 3}], key=list)
         labels_ = sorted((labels(v, halfspaces) for v, l in vertices), key=list)
         for label, expected_label in zip(labels_, expected_labels):
             self.assertTrue(
                 np.array_equal(label, expected_label),
-                msg="{} != {}".format(label, expected_label),
+                msg=f"{label} != {expected_label}",
             )
 
         B = np.array([[3, 2], [2, 6], [3, 1]])
         halfspaces = build_halfspaces(B.transpose())
         vertices = non_trivial_vertices(halfspaces)
         expected_labels = sorted(
-            [
-                set([0, 2, 3]),
-                set([0, 3, 4]),
-                set([0, 1, 2]),
-                set([1, 2, 4]),
-                set([0, 1, 4]),
-            ],
-            key=list,
+            [{0, 2, 3}, {0, 3, 4}, {0, 1, 2}, {1, 2, 4}, {0, 1, 4}], key=list
         )
 
         labels_ = sorted((labels(v, halfspaces) for v, l in vertices), key=list)
         for label, expected_label in zip(labels_, expected_labels):
             self.assertTrue(
                 np.array_equal(label, expected_label),
-                msg="{} != {}".format(label, expected_label),
+                msg=f"{label} != {expected_label}",
             )

@@ -5,6 +5,7 @@ This plots an example of non-convergence in asymmetric replicator dynamics.
 
 The code should match the reference code in the documentation.
 """
+
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -23,12 +24,12 @@ plt.plot(xs)
 plt.title("Probability distribution of strategies over time for row player")
 plt.xlabel("Timepoints")
 plt.ylabel("Probability")
-plt.legend([f"$s_{0}$", f"$s_{1}$", f"$s_{2}$"])
+plt.legend(['$s_0$', '$s_1$', '$s_2$'])
 plt.subplot(1, 2, 2)
 plt.plot(ys)
 plt.title("Probability distribution of strategies over time for column player")
 plt.xlabel("Timepoints")
 plt.ylabel("Probability")
-plt.legend([f"$s_{0}$", f"$s_{1}$", f"$s_{2}$"])
+plt.legend(['$s_0$', '$s_1$', '$s_2$'])
 
 plt.savefig("main.svg", transparent=True)

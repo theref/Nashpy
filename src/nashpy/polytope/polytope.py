@@ -33,8 +33,7 @@ def build_halfspaces(M: npt.NDArray) -> npt.NDArray:
     number_of_strategies, dimension = M.shape
     b = np.append(-np.ones(number_of_strategies), np.zeros(dimension))
     M = np.append(M, -np.eye(dimension), axis=0)
-    halfspaces = np.column_stack((M, b.transpose()))
-    return halfspaces
+    return np.column_stack((M, b.transpose()))
 
 
 def find_feasible_point(halfspaces: npt.NDArray) -> npt.NDArray:
